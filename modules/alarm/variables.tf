@@ -17,10 +17,12 @@ variable "alarm_def" {
     is_enabled                   = optional(bool, true)
     namespace                    = string
     metric_compartment_id        = optional(string)
+    metric_compartment_id_in_subtree = optional(bool,false)
     repeat_notification_duration = optional(string)
     trigger                      = optional(string, "PT1M")
     suppression_from_time        = optional(string)
     suppression_till_time        = optional(string)
+    suppression_description = optional(string)
     message_format               = optional(string, "RAW")
     body                         = optional(string, null)
     freeform_tags                = optional(map(string))
@@ -28,6 +30,17 @@ variable "alarm_def" {
     resolution                   = optional(string, "1m")
     resource_group               = optional(string, null)
     split_notification           = optional(bool, false)
+    notification_title = optional(string)
+    notification_version = optional(string)
+    evaluation_slack_duration = optional(string,"PT3M")
+    
+    overrides = optional(map(object({
+      body             = string
+      pending_duration = string
+      query            = string
+      rule_name        = string
+      severity         = string
+    })))
   }))
 }
 

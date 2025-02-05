@@ -4,13 +4,13 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0 |
-| <a name="requirement_oci"></a> [oci](#requirement\_oci) | >= 4.67.3 |
+| <a name="requirement_oci"></a> [oci](#requirement\_oci) | >= 6.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_oci"></a> [oci](#provider\_oci) | >= 4.67.3 |
+| <a name="provider_oci"></a> [oci](#provider\_oci) | >= 6.0.0 |
 
 ## Modules
 
@@ -29,10 +29,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_alarm_def"></a> [alarm\_def](#input\_alarm\_def) | OCI Alarm definition | <pre>map(object({<br>    destination                  = string<br>    display_name                 = string<br>    severity                     = optional(string, "CRITICAL")<br>    query                        = string<br>    is_enabled                   = optional(bool, true)<br>    namespace                    = string<br>    metric_compartment_id        = optional(string)<br>    repeat_notification_duration = optional(string, "PT5M")<br>    trigger                      = optional(string, "PT5M")<br>    suppression_from_time        = optional(string)<br>    suppression_till_time        = optional(string)<br>    message_format               = optional(string, "RAW")<br>    body                         = optional(string, null)<br>    freeform_tags                = optional(map(string))<br>    defined_tags                 = optional(map(string))<br>    resolution                   = optional(string, "1m")<br>    resource_group               = optional(string, null)<br>    split_notification           = optional(bool, false)<br>  }))</pre> | n/a | yes |
+| <a name="input_alarm_def"></a> [alarm\_def](#input\_alarm\_def) | OCI Alarm definition | <pre>map(object({<br/>    destination                  = string<br/>    display_name                 = string<br/>    severity                     = optional(string, "CRITICAL")<br/>    query                        = string<br/>    is_enabled                   = optional(bool, true)<br/>    namespace                    = string<br/>    metric_compartment_id        = optional(string)<br/>    metric_compartment_id_in_subtree = optional(bool,false)<br/>    repeat_notification_duration = optional(string)<br/>    trigger                      = optional(string, "PT1M")<br/>    suppression_from_time        = optional(string)<br/>    suppression_till_time        = optional(string)<br/>    suppression_description = optional(string)<br/>    message_format               = optional(string, "RAW")<br/>    body                         = optional(string, null)<br/>    freeform_tags                = optional(map(string))<br/>    defined_tags                 = optional(map(string))<br/>    resolution                   = optional(string, "1m")<br/>    resource_group               = optional(string, null)<br/>    split_notification           = optional(bool, false)<br/>    notification_title = optional(string)<br/>    notification_version = optional(string)<br/>    evaluation_slack_duration = optional(string,"PT3M")<br/>    <br/>    overrides = optional(map(object({<br/>      body             = string<br/>      pending_duration = string<br/>      query            = string<br/>      rule_name        = string<br/>      severity         = string<br/>    })))<br/>  }))</pre> | n/a | yes |
 | <a name="input_compartment_ocid"></a> [compartment\_ocid](#input\_compartment\_ocid) | Compartment OCID | `string` | n/a | yes |
 | <a name="input_label_prefix"></a> [label\_prefix](#input\_label\_prefix) | Prefix to be added to the resources | `string` | `"none"` | no |
-| <a name="input_notification"></a> [notification](#input\_notification) | Notification Topic and Subscription | <pre>map(object({<br>    description   = optional(string)<br>    create_topic  = optional(bool, true)<br>    defined_tags  = optional(map(string))<br>    freeform_tags = optional(map(string))<br>    subscription = optional(map(object({<br>      endpoint = string<br>      protocol = string<br>    })))<br>  }))</pre> | n/a | yes |
+| <a name="input_notification"></a> [notification](#input\_notification) | Notification Topic and Subscription | <pre>map(object({<br/>    description   = optional(string)<br/>    create_topic  = optional(bool, true)<br/>    defined_tags  = optional(map(string))<br/>    freeform_tags = optional(map(string))<br/>    subscription = optional(map(object({<br/>      endpoint = string<br/>      protocol = string<br/>    })))<br/>  }))</pre> | n/a | yes |
 
 ## Outputs
 
